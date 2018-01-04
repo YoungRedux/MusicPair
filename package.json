@@ -1,0 +1,26 @@
+{
+  "name": "MusicPair",
+  "version": "1.0.0",
+  "description": "It's like bumble but with music.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoungRedux/MusicPair.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YoungRedux/MusicPair/issues"
+  },
+  "homepage": "https://github.com/YoungRedux/MusicPair#readme",
+  "dependencies": {
+    "next": "^4.2.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
