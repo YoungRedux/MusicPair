@@ -1,2 +1,2 @@
 # MusicPair
-It's like bumble but with music
+It's like bumble but with music.
