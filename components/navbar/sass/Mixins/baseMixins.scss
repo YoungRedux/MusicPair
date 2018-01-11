@@ -1,0 +1,327 @@
+$border-card-radius: .5rem;
+@mixin ri-card {
+    background-color: #fff;
+    //box-shadow: 0 1px 5px 0px rgba(0, 0, 0, 0.4);
+    margin-bottom: .25rem;//1.5rem;
+    //border-radius: $border-card-radius;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.1),0 3px 1px -2px rgba(0,0,0,.1),0 1px 5px 1px rgba(0,0,0,.09);
+}
+.ri-card {
+    @include ri-card;
+}
+@mixin card_border_top {
+    border-top-right-radius: $border-card-radius;
+    border-top-left-radius: $border-card-radius; 
+}
+@mixin card_border_bottom {
+    border-bottom-left-radius: $border-card-radius;
+    border-bottom-right-radius: $border-card-radius;
+}
+@mixin ri-button($bg-color: #eee, $active-color: #eee) {
+    padding: .75rem;
+    transition: all .5s ease;
+    border-radius: .5rem;
+    &:hover {
+        background-color: $bg-color;
+        transition: all .5s ease;
+        box-shadow: $ri-box-shadow;
+    }
+    &:active {
+        background-color: $active-color;
+    }
+}
+@mixin ri-button-fill($bg-color: $light-gray) {
+    border: 1px solid #D5D5D5;
+    padding: .3rem .5rem;
+    color: #676767;
+    background-color: $bg-color;
+    font-size: .8rem;
+    font-weight: 700;
+    transition: background-color .2s ease;
+    &:hover {
+        background-color: #c9c9c9;
+        transition: background-color .2s ease;
+    }
+}
+@mixin  ri-check-box {
+    display: flex;
+    align-items: center;
+    .check-box-inner {
+        width: 1.2rem;
+        height: 1.2rem;
+        border: 1px solid rgb(195, 195, 195);
+        display: block;
+        margin-right: .5rem;
+        &.checked {
+            background: #B0D6F0;
+            border: 1px solid #B0D6F0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:after {
+                content: "\f00c";
+                font-family: FontAwesome;
+                color: white;
+                font-size: .8rem;
+            }
+        }
+    }
+    .check-box-text {
+        color: #676767;
+        font-weight: 700;
+        font-size: .9rem;
+    }
+}
+@mixin flexbox($justify) {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content:$justify;
+    justify-content:$justify;
+}
+@mixin flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex:  $values;
+    -webkit-flex:  $values;
+    -ms-flex:  $values;
+     flex:  $values;
+}
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;  
+  -moz-box-ordinal-group: $val;     
+  -ms-flex-order: $val;     
+  -webkit-order: $val;  
+  order: $val;
+}
+@mixin flex-align($val) {
+    -webkit-box-align: $val;
+    -webkit-align-items: $val;
+    -ms-flex-align: $val;
+    align-items: $val;
+}
+@mixin nowrap-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@mixin ri-action-bar($bg-color: $primary-ri) {
+    background-color: $bg-color;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    overflow: hidden;
+    position: relative;
+    .title {
+        font-size: 1.5rem;
+        margin-right: 2rem;
+        color: #fff;
+    }
+    .action-container {
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        background-color: #fff;
+        border-radius: 2rem;
+        box-shadow: $ri-box-shadow;
+        margin-right: 2rem;
+        font-size: 1.25rem;
+        line-height: 2.2rem;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: -1rem;
+        .action {
+            margin: 0 1rem;
+            &.search-action {
+                display: none;
+                @media (max-width: $mobile-transition) {
+                    display: block;
+                }
+            }
+        }
+        .action-divider {
+            margin: 0 1rem;
+            &:before {
+                content: "|";
+            }
+        }
+        .updateState {
+            margin: 0 1rem;
+            &.green {
+                color: $success-ri;
+            }
+            &.red {
+                color: $alert-ri;
+            }
+            &.amber {
+                color: $amber;
+            }
+            &.orange {
+                color: $orange;
+            }
+        }
+    }
+    .search-container {
+        .search {
+            @include ri-input;
+        }
+        .close-search {
+            display: none;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+        @media (max-width: $mobile-transition) {
+            display: none;
+            &.active {
+                display: flex;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                .search {
+                    height: 3.5rem;
+                    border-radius: 0;
+                    flex: 1 0 auto;
+                    margin-right: 0;
+                }
+                .close-search {
+                    flex: 0 0 3.5rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: $dark-gray;
+                }
+            }
+        }
+    }
+}
+@mixin ri-toggle($bg-color: $primary-ri) {
+    width: 4rem;
+    height: 2.2rem;
+    background-color: #fff;
+    display: block;
+    border-radius: 2rem;
+    border: 1px solid #ddd;
+    box-shadow: inset 0px 0px 3px rgba(47, 47, 47, 0.4);
+    transition: background-color 0.4s;
+    &.active {
+        background-color: $bg-color;
+        transition: background-color 0.4s;
+        &:after {
+            margin-left: 2rem;
+            transition: margin 0.4s;
+        }
+    }
+    &:after {
+        content: "";
+        height: 2rem;
+        width: 2rem;
+        border-radius: 2rem;
+        box-shadow: 0px 0px 5px gray;
+        background-color: #fff;
+        transition: margin 0.4s;
+        display: block;
+    }
+}
+@mixin generic-table {
+    margin: 0;
+    border: none;
+    border-collapse: collapse;
+    td { 
+        padding: .2rem .5rem; 
+        font-size: 1rem; 
+        border: 1px solid #EDEDED;
+        border-collapse: collapse;
+    }
+    .table-header {
+        th {
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+            background: orange;
+            padding: .5rem;
+            border: none;
+            &:last-of-type { border-right: 1px solid orange; }
+        }
+    }
+    .sub-heading {
+        td {
+            color: #fff;
+            font-weight: bold;
+            padding: .5rem;
+            text-align:left;
+            background: grey;
+            border: none;
+            &:last-of-type { border-right: 1px solid grey; }
+        }
+    }
+}
+@mixin ri-input {
+    margin-bottom: 0;
+    box-shadow: none;
+    border-radius: 1rem;
+    width: 20rem;
+    font-size: 1.2rem;
+    margin-right: 2rem;
+    padding: .3rem;
+}
+@mixin ri-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    overflow-y:  auto;
+}
+@mixin ri-modal {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+    box-shadow: 0 0 50px 0px rgb(45, 45, 45);
+    //@include card_border_bottom;
+    //@include card_border_top;
+    @media (max-width: $mobile-transition) {
+        margin: 0;   
+    }
+}
+@mixin ri-modal-header {
+    //@include card_border_top;
+    background-color: $primary-ri;
+    color: white;
+    padding: .75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@mixin ri-modal-sub-header {
+    padding: .5rem 1rem;
+    border-bottom: 1px solid $light-gray;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+}
+@mixin ri-modal-body {
+    //@include card_border_bottom;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: #fff;
+}
+// ex: .container {
+//          @include flexbox();     
+//          
+//          .item {
+//              @include flex(1 200px);
+//              @include order(2);
+//          }
+//}

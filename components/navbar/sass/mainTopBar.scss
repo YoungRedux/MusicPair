@@ -1,0 +1,14 @@
+
+@import "./Mixins/baseMixins.scss";
+$top-nav-height: 3.5rem;
+
+.mm-main-top-bar{
+    z-index: 1002;
+    position: relative;
+    background: white;
+    @include flexbox(space-between);
+    height: $top-nav-height;
+    width: 100%;
+    box-shadow: 0 -3px 8px 2px #000000
+
+}
